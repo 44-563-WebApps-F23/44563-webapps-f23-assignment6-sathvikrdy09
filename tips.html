@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>tips</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
+          integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    </head>
+ 
+<body>
+
+<h1>Satvik Reddy Cheruku shows tip amounts</h1>
+
+<form>
+    <label for="base">Enter base amount </label>
+    <input type ="number" class="form-control border border border-dark" id="base"  value="50"> <br>
+    <label for="tip">Enter the tip percent </label>
+    <input type ="number" class="form-control border border border-dark" id="tip"  value=15> <br>
+    <button  type="button" class="btn btn-success"onclick="tips()" value="Show tip">show tip</button>
+</form>
+<div id="result"></div>
+<script> 
+let myOutput="";
+function tips() {
+    
+    
+    var base = document.getElementById("base").value;
+    var tip = parseInt(document.getElementById("tip").value);
+    var toshow="Tips are: ";
+    
+   for(var i=0; i < 5; i++)
+   {
+    var calculatedtip= (base*(tip+i*4))/100;
+    toshow += (tip+i*4)+"% is "+calculatedtip.toFixed(1)+"; ";  
+   }
+   document.getElementById("result").innerHTML = toshow; 
+} 
+</script>
+
+<form>
+    <input type="radio"  id="sum"  value="sum"   onclick="chooseOp()"  >
+        <label for="sum">sum</label></br>
+        <input type="radio" id="diff"  value="difference" onclick="chooseOp()"  >
+        <label for="diff">diff</label></br>
+        <input type="radio" id="mult"  value="product" onclick="chooseOp()"  >
+        <label for="mult">Mult</label></br>       
+</form>
+<p id="resultid"></p>
+<script>
+    function chooseOp() {
+      var base = parseFloat(document.getElementById("base").value);
+      var tip = parseFloat(document.getElementById("tip").value);
+      if(document.getElementById('sum').checked)
+      {
+        var sum= base+tip;
+        document.getElementById("resultid").innerHTML="Sum of "+base+" and "+tip+" is "+sum;
+      }
+      else if(document.getElementById('diff').checked)
+      {
+        var diff= base-tip;
+        document.getElementById("resultid").innerHTML="difference of "+base+" and "+tip+" is "+diff;
+      }
+      else{
+        var mul=base*tip;
+        document.getElementById("resultid").innerHTML="Product of "+base+" and "+tip+" is "+mul;
+      }
+    }
+</script>
+
+</body>
+</html> 
